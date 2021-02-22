@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Contact Form</title>
+        <link rel = "stylesheet" href = "{{url_for('static', filename = 'css/contact.css')}}"/>
+        {% extends 'base.html' %}
+    </head>
+    <h1>It works</h1>
+    <body>
+        
+        {% block main %}
+            <form id = "contact-form" action = "/contact" method = "POST">
+                {{ form.csrf_token }}
+                <h1>Contact Form</h1>
+                <hr>
+                <h6>Fill in this form to contact the site owners.</h6>
+                <br>
+                <br>
+                <div id = "name-field">
+                    <b>{{ form.name.label }}</b>
+                    <span class = "validator">(Required)</span>
+                    <br>
+                    <span>{{ form.name.description }}</span>
+                    <br>
+                    {{ form.name }}
+                </div>
+
+                <div id = "email-field">
+                    <b>{{ form.email.label }}</b>
+                    <span class = "validator">(Required)</span>
+                    <br>
+                    <span>{{ form.email.description }}</span>
+                    <br>
+                    {{ form.email }}
+                </div>
+
+                <div id = "subject-field">
+                    <b>{{ form.subject.label }}</b>
+                    <span class = "validator">(Required)</span>
+                    <br>
+                    <span>{{ form.subject.description }}</span>
+                    <br>
+                    {{ form.subject }}
+                </div>
+
+                <div id = "message-field">
+                    <b>{{ form.message.label }}</b>
+                    <span class = "validator">(Required)</span>
+                    <br>
+                    <span>{{ form.message.description }}</span>
+                    <br>
+                    {{ form.message }}
+                </div>
+
+                <div id = "send-btn">
+                    {{ form.send }}
+                </div>
+                
+            </form>
+        {% endblock %}
+    </body>
+</html>
